@@ -1,0 +1,13 @@
+h1,
+h2 {
+  font-family: Lato;
+}
+label {
+  display: block;
+}
+form {
+  width: 350px;
+}
+.right {
+  align-self: flex-end;
+}
