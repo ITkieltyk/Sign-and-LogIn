@@ -3,11 +3,22 @@ h2 {
   font-family: Lato;
 }
 label {
-  display: block;
+  display: flex;
+  text-align: left;
 }
 form {
   width: 350px;
+  padding: 5px;
+  margin: 10px auto;
 }
 .right {
-  align-self: flex-end;
+  justify-self: flex-end;
+  display: block;
+}
+.left {
+  justify-self: flex-start;
+  display: block;
+}
+form input {
+  display: block;
 }

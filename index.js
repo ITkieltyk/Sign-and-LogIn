@@ -1,9 +1,8 @@
 // Import stylesheets
 import './style.css';
 
-// Write Javascript code!
 const appDiv = document.getElementById('app');
-// appDiv.innerHTML = `<h1>JS Starter</h1>`;
+
 const alfabetString =
   'abcdefghijklmnoprstuvwz0123456789ABCDEFGHIJKLŁMNOPRSTUVWZ';
 const alfabet = alfabetString.split('');
@@ -13,61 +12,41 @@ let users = [];
 
 function passHash(pass) {
   const passwordInput = pass.split('');
-  console.log(passwordInput);
-  // console.log(passwordInput.length);
+
   const passwordHashed = [];
   for (let i = 0; i < passwordInput.length; i++) {
-    // console.log(passwordInput[i]);
     const passLetterInx = alfabet.findIndex(
       (passLetter) => passLetter === passwordInput[i]
     );
-    passLetterInx > alfabet.length
-      ? passwordHashed.push(alfabet[(passLetterInx - alfabet.length + 1) * 2])
-      : passwordHashed.push(alfabet[(passLetterInx + 1) * 2]);
-    // passwordHashed.push(alfabet[passLetterInx * 2]);
-    // console.log(passLetterInx);
+    passwordHashed.push(alfabet[((alfabet.length % passLetterInx) + 1) * 2]);
   }
   return passwordHashed.join('');
 }
 
 function passCheck(pass, passHashed) {
   const passwordInput = pass.split('');
-  // console.log(passwordInput);
-  // console.log(passwordInput.length);
+
   const passwordHashed = [];
   for (let i = 0; i < passwordInput.length; i++) {
-    // console.log(passwordInput[i]);
     const passLetterInx = alfabet.findIndex(
       (passLetter) => passLetter === passwordInput[i]
     );
-    passLetterInx > alfabet.length
-      ? passwordHashed.push(alfabet[(passLetterInx - alfabet.length + 1) * 2])
-      : passwordHashed.push(alfabet[(passLetterInx + 1) * 2]);
-    // passwordHashed.push(alfabet[passLetterInx * 2]);
-    // console.log(passLetterInx);
+    passwordHashed.push(alfabet[((alfabet.length % passLetterInx) + 1) * 2]);
   }
   return passwordHashed.join('') === passHashed;
 }
-let passHashed = passHash(haslo1);
-// const haslo = prompt('podaj hasło');
-console.log(passHashed);
-
-console.log(passCheck(haslo1, passHashed));
-
-// function addUser (event) {
-//   event.preventDefault();
-
-//   const userName = document.forms[1][1].value;
-//   console.log(userName);
-// }
 
 document.getElementById('signIn').addEventListener('click', function (event) {
-  event.preventDefault();
+  // event.preventDefault();
 
   const userName = document.forms[0].elements[0].value;
   const userSurname = document.forms[0].elements[1].value;
   const userLogin = document.forms[0].elements[2].value;
   const userPass = document.forms[0].elements[3].value;
+
+  for (let i = 0; i < document.forms[0].length - 1; i++) {
+    document.forms[0].elements[i].value = '';
+  }
 
   const userPassHashed = passHash(userPass);
 
@@ -78,7 +57,6 @@ document.getElementById('signIn').addEventListener('click', function (event) {
     passHashed: userPassHashed,
   };
 
-  console.log(user);
   users.push(user);
   console.log(users);
 });

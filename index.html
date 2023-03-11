@@ -1,19 +1,31 @@
 <div id="app">
   <form action="" id="inputForm">
     <label for="name">
-      Name:<span class="right"><input type="text" id="name" /></span
+      <span class="left">Name:</span
+      ><span class="right"
+        ><input type="text" id="name" required minlength="1" /></span
     ></label>
     <label for="surname"
-      >Surname:<span class="right"><input type="text" id="surname" /></span
+      ><span class="left">Surname:</span
+      ><span class="right"
+        ><input type="text" id="surname" required minlength="1" /></span
     ></label>
     <label for="login"
-      >Login:<span class="right"><input type="text" id="login" /></span
+      ><span class="left">Login:</span
+      ><span class="right"
+        ><input type="text" id="login" required minlength="4" /></span
     ></label>
     <label for="password"
-      >Password:<span class="right"
-        ><input type="password" id="password" /></span
+      ><span class="left">Password:</span
+      ><span class="right"
+        ><input
+          type="password"
+          id="password"
+          required
+          pattern="[a-z][A-Z][0-9]"
+          minlength="4" /></span
     ></label>
-    <button id="signIn">Save User Data</button>
+    <input type="submit" id="signIn" value="Save User Data" />
   </form>
   <br />
   <br /><br />
